@@ -14,9 +14,11 @@ class StringCalculator
     end
 
     numbers = numbers.split(/[#{delimiters}]/).map(&:to_i)
+    
+    negative_numbers = numbers.select { |number| number < 0 }
 
-    if negative_number = numbers.find { |number| number < 0 }
-      raise ArgumentError, "negative numbers not allowed #{negative_number}"
+    if negative_numbers.any?
+      raise ArgumentError, "negative numbers not allowed #{negative_numbers.join(", ")}"
     end
 
     numbers.sum
