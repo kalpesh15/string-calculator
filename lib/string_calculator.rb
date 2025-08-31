@@ -20,8 +20,6 @@ class StringCalculator
 
       if get_character_groups_count(custom_delimiter) == 0
         delimiters.push(custom_delimiter)
-      elsif get_character_groups_count(custom_delimiter) == 1
-        delimiters.push(custom_delimiter[1..-2])
       else
         delimiters += custom_delimiter.scan(/\[(.*?)\]/).map(&:first)
       end
