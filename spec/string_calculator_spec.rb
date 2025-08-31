@@ -23,7 +23,7 @@ RSpec.describe StringCalculator do
       expect(calculator.add("1,2,3,10")).to eq(16)
     end
 
-    it "allows '\n' as well as ',' character between numbers and returns sum" do
+    it "allows '\\n' as well as ',' character between numbers and returns sum" do
       expect(calculator.add("1\n2,3")).to eq(6)
     end
 
