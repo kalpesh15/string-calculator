@@ -14,5 +14,9 @@ RSpec.describe StringCalculator do
     it "task a single number and returns the sum" do
       expect(calculator.add("1")).to eq(1)
     end
+
+    it "task two numbers and returns the sum" do
+      expect(calculator.add("1,2")).to eq(3)
+    end
   end
 end
