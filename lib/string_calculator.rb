@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 class StringCalculator
+  def initialize
+    @called_count = 0
+  end
+
   def add(numbers)
+    @called_count += 1
+
     if numbers == ""
       return 0
     end
@@ -25,6 +31,6 @@ class StringCalculator
   end
 
   def get_called_count
-    return 0
+    return @called_count
   end
 end
