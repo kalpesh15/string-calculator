@@ -13,6 +13,12 @@ class StringCalculator
       delimiters += custom_delimiter[2..]
     end
 
-    numbers.split(/[#{delimiters}]/).reduce(0) { |sum, number| sum + number.to_i }
+    numbers = numbers.split(/[#{delimiters}]/).map(&:to_i)
+
+    if negative_number = numbers.find { |number| number < 0 }
+      raise ArgumentError, "negative numbers not allowed #{negative_number}"
+    end
+
+    numbers.reduce(0) { |sum, number| sum + number.to_i }
   end
 end
