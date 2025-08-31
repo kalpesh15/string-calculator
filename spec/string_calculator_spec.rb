@@ -44,5 +44,11 @@ RSpec.describe StringCalculator do
     it 'returns no of times #add method was called' do
       expect(calculator.get_called_count()).to eq(0)
     end
+
+    it 'returns no of times #add was called when called multiple times' do
+      calculator.add("1,2,3")
+      calculator.add("1,2,3")
+      expect(calculator.get_called_count()).to eq(2)
+    end
   end
 end
