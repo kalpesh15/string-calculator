@@ -30,5 +30,9 @@ RSpec.describe StringCalculator do
     it "allows to specify delimiter at the beginning of string and returns sum" do
       expect(calculator.add("//;\n1;2;4")).to eq(7)
     end
+
+    it "throws an exception if negative number is passed" do
+      expect { calculator.add("1,-2,3") }.to raise_error(ArgumentError, "negative numbers not allowed -2")
+    end
   end
 end
