@@ -19,6 +19,6 @@ class StringCalculator
       raise ArgumentError, "negative numbers not allowed #{negative_number}"
     end
 
-    numbers.reduce(0) { |sum, number| sum + number.to_i }
+    numbers.sum
   end
 end
