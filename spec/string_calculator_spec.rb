@@ -11,12 +11,16 @@ RSpec.describe StringCalculator do
       expect(calculator.add("")).to eq(0)
     end
 
-    it "task a single number and returns the sum" do
+    it "takes a single number and returns the sum" do
       expect(calculator.add("1")).to eq(1)
     end
 
-    it "task two numbers and returns the sum" do
+    it "takes two numbers and returns the sum" do
       expect(calculator.add("1,2")).to eq(3)
+    end
+
+    it "takes random amount of numbers and returns the sum" do
+      expect(calculator.add("1,2,3,10")).to eq(16)
     end
   end
 end
