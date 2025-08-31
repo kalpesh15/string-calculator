@@ -48,6 +48,12 @@ RSpec.describe StringCalculator do
         expect(calculator.add("//[***]\n1***2***3")).to eq(6)
       end
     end
+
+    context 'when multiple delimiters of length 1 are specified at the beginning of the string' do
+      it 'return sum' do
+        expect(calculator.add("//[*][%]\n1*2%3")).to eq(6)
+      end
+    end
   end
 
   describe "#get_called_count" do
