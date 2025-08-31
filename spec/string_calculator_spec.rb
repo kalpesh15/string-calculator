@@ -39,4 +39,10 @@ RSpec.describe StringCalculator do
       expect { calculator.add("1,-2,3\n-4,-6") }.to raise_error(ArgumentError, "negative numbers not allowed -2, -4, -6")
     end
   end
+
+  describe "#get_called_count" do
+    it 'returns no of times #add method was called' do
+      expect(calculator.get_called_count()).to eq(0)
+    end
+  end
 end
