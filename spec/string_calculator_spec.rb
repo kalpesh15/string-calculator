@@ -26,5 +26,9 @@ RSpec.describe StringCalculator do
     it "allows '\n' as well as ',' character between numbers and returns sum" do
       expect(calculator.add("1\n2,3")).to eq(6)
     end
+
+    it "allows to specify delimiter at the beginning of string and returns sum" do
+      expect(calculator.add("//;\n1;2;4")).to eq(7)
+    end
   end
 end
