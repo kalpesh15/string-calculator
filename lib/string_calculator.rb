@@ -6,7 +6,6 @@ class StringCalculator
       return 0
     end
 
-    num1, num2 = numbers.split(",")
-    num1.to_i + num2.to_i
+    numbers.split(",").reduce(0) { |sum, number| sum + number.to_i }
   end
 end
