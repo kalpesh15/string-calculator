@@ -12,14 +12,20 @@ class StringCalculator
       return 0
     end
 
-    delimiters = ",\n"
+    delimiters = [",", "\n"]
 
     if numbers.start_with?("//")
       custom_delimiter, numbers = numbers.split("\n")
-      delimiters += custom_delimiter[2..]
+      custom_delimiter = custom_delimiter[2..]
+
+      if custom_delimiter.start_with?('[')
+        delimiters.push(custom_delimiter[1..-2])
+      else
+        delimiters.push(custom_delimiter)
+      end
     end
 
-    numbers = numbers.split(/[#{delimiters}]/).map(&:to_i)
+    numbers = numbers.split(Regexp.union(delimiters)).map(&:to_i)
     
     negative_numbers = numbers.select { |number| number < 0 }
 
