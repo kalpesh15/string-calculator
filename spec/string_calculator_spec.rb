@@ -38,6 +38,10 @@ RSpec.describe StringCalculator do
     it "throws an exception if multiple negatives numbers are passed with correct error message" do
       expect { calculator.add("1,-2,3\n-4,-6") }.to raise_error(ArgumentError, "negative numbers not allowed -2, -4, -6")
     end
+
+    it 'ignores numbers greater than 1000 and returns sum of rest of numbers' do
+      expect(calculator.add("1,2,1001,5")).to eq(8)
+    end
   end
 
   describe "#get_called_count" do
