@@ -18,7 +18,9 @@ class StringCalculator
       custom_delimiter, numbers = numbers.split("\n")
       custom_delimiter = custom_delimiter[2..]
 
-      if custom_delimiter.start_with?('[')
+      if custom_delimiter.count("[") > 1
+        delimiters += custom_delimiter.scan(/\[(.?)\]/).map(&:first)
+      elsif custom_delimiter.start_with?('[')
         delimiters.push(custom_delimiter[1..-2])
       else
         delimiters.push(custom_delimiter)
