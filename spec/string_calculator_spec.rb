@@ -42,6 +42,12 @@ RSpec.describe StringCalculator do
     it 'ignores numbers greater than 1000 and returns sum of rest of numbers' do
       expect(calculator.add("1,2,1001,5")).to eq(8)
     end
+
+    context 'when delimiters of any length are specified at the beginning of the string' do
+      it 'return sum' do
+        expect(calculator.add("//[***]\n1***2***3")).to eq(6)
+      end
+    end
   end
 
   describe "#get_called_count" do
