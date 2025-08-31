@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class StringCalculator
-  def add(number)
-    if number == ""
+  def add(numbers)
+    if numbers == ""
       return 0
     end
 
-    number.to_i
+    num1, num2 = numbers.split(",")
+    num1.to_i + num2.to_i
   end
 end
