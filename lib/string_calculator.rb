@@ -14,16 +14,16 @@ class StringCalculator
 
     delimiters = [",", "\n"]
 
-    if numbers.start_with?("//")
+    if has_custom_delimiter(numbers)
       custom_delimiter, numbers = numbers.split("\n")
       custom_delimiter = custom_delimiter[2..]
 
-      if custom_delimiter.count("[") > 1
-        delimiters += custom_delimiter.scan(/\[(.?)\]/).map(&:first)
-      elsif custom_delimiter.start_with?('[')
+      if get_character_groups_count(custom_delimiter) == 0
+        delimiters.push(custom_delimiter)
+      elsif get_character_groups_count(custom_delimiter) == 1
         delimiters.push(custom_delimiter[1..-2])
       else
-        delimiters.push(custom_delimiter)
+        delimiters += custom_delimiter.scan(/\[(.?)\]/).map(&:first)
       end
     end
 
@@ -42,5 +42,15 @@ class StringCalculator
 
   def get_called_count
     return @called_count
+  end
+
+  private
+
+  def has_custom_delimiter(input)
+    input.start_with?("//")
+  end
+
+  def get_character_groups_count(delimiters)
+    delimiters.count("[")
   end
 end
