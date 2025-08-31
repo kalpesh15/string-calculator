@@ -5,5 +5,7 @@ class StringCalculator
     if number == ""
       return 0
     end
+
+    number.to_i
   end
 end
