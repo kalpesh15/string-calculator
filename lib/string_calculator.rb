@@ -6,13 +6,13 @@ class StringCalculator
       return 0
     end
 
+    delimiters = ",\n"
+
     if numbers.start_with?("//")
       custom_delimiter, numbers = numbers.split("\n")
-      custom_delimiter = custom_delimiter[2..]
-  
-      return numbers.split(/#{custom_delimiter}/).reduce(0) { |sum, number| sum + number.to_i }
+      delimiters += custom_delimiter[2..]
     end
 
-    numbers.split(/,|\n/).reduce(0) { |sum, number| sum + number.to_i }
+    numbers.split(/[#{delimiters}]/).reduce(0) { |sum, number| sum + number.to_i }
   end
 end
